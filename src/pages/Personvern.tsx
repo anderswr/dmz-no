@@ -68,7 +68,7 @@ const Personvern = () => {
             </ul>
             <div className="flex flex-wrap gap-4 mt-4 text-sm">
               {a.url && <a href={a.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">App Store</a>}
-              {a.privacyUrl && <a href={a.privacyUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{lang === "en" ? "Full privacy policy" : "Fullstendig personvernerklæring"}</a>}
+              {a.privacyUrl && <a href={a.privacyUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{lang === "en" ? "Full PAC-RUN privacy policy →" : "Fullstendig personvernerklæring for PAC-RUN →"}</a>}
             </div>
           </section>
         ))}
