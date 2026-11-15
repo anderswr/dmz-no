@@ -66,6 +66,10 @@ const Personvern = () => {
             <ul className="list-disc pl-5 mt-3 space-y-2 text-sm text-muted-foreground leading-relaxed">
               {a.privacy[lang].map((p, i) => <li key={i}>{p}</li>)}
             </ul>
+            <div className="flex flex-wrap gap-4 mt-4 text-sm">
+              {a.url && <a href={a.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">App Store</a>}
+              {a.privacyUrl && <a href={a.privacyUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{lang === "en" ? "Full privacy policy" : "Fullstendig personvernerklæring"}</a>}
+            </div>
           </section>
         ))}
       </div>
