@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useTheme } from "./ThemeProvider";
 
 const navLinks = [
-  { label: "Hjem", href: "#hjem" },
-  { label: "Utvikling", href: "#utvikling" },
-  { label: "Kontakt", href: "#kontakt" },
+  { label: "Hjem", href: "/#hjem" },
+  { label: "Utvikling", href: "/#utvikling" },
+  { label: "Kontakt", href: "/kontakt" },
 ];
 
 const Navbar = () => {
@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 mix-blend-normal">
       <div className="mx-auto max-w-7xl flex items-center justify-between px-6 py-5">
-        <a href="#hjem" className="font-heading text-sm font-bold tracking-[0.2em] uppercase text-foreground">
+        <a href="/#hjem" className="font-heading text-sm font-bold tracking-[0.2em] uppercase text-foreground">
           DMZ DATA
         </a>
 
