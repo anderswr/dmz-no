@@ -1,6 +1,6 @@
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, Mail } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import LegalShell from "@/components/LegalShell";
 import { apps, COMPANY } from "@/data/apps";
 import { useLang } from "@/hooks/use-lang";
@@ -11,9 +11,6 @@ const T = {
     intro: "This page covers support for all apps and services from DMZ Data AS, including our iOS apps and web services.",
     info: "Contact information", company: "Company", org: "Org. no.", address: "Address", email: "Support e-mail",
     response: "Response time", responseVal: "We aim to reply within 2 business days.",
-    form: "Contact form",
-    formNote: "Pressing send opens your e-mail app with the message filled in. Please do not include sensitive information such as passwords or payment details.",
-    name: "Name", yourEmail: "Your e-mail", app: "App / service", other: "Other", subject: "Subject", message: "Message", send: "Send e-mail",
     faq: "Frequently asked questions",
     q: [
       ["How do I restore my in-app purchase?", "Open the app, tap a locked section or the purchase screen, and choose \"Restore purchases\". Make sure you are signed in with the same Apple ID that was used for the purchase."],
@@ -30,9 +27,6 @@ const T = {
     intro: "Denne siden gjelder support for alle apper og tjenester fra DMZ Data AS, inkludert iOS-apper og nettjenester.",
     info: "Kontaktinformasjon", company: "Firma", org: "Org.nr.", address: "Adresse", email: "E-post for support",
     response: "Svartid", responseVal: "Vi svarer normalt innen 2 virkedager.",
-    form: "Kontaktskjema",
-    formNote: "Når du trykker send, åpnes e-postprogrammet ditt med meldingen ferdig utfylt. Ikke send sensitiv informasjon som passord eller betalingsdetaljer.",
-    name: "Navn", yourEmail: "Din e-post", app: "App / tjeneste", other: "Annet", subject: "Emne", message: "Melding", send: "Send e-post",
     faq: "Ofte stilte spørsmål",
     q: [
       ["Hvordan gjenoppretter jeg et kjøp i appen?", "Åpne appen, trykk på en låst del eller kjøpsskjermen, og velg «Restore purchases» / «Gjenopprett kjøp». Bruk samme Apple-ID som ved kjøpet."],
@@ -46,21 +40,11 @@ const T = {
   },
 };
 
-const input = "w-full rounded-md border border-border bg-background/70 px-3 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring";
 
 const Kontakt = () => {
   const [lang, setLang] = useLang();
   const t = T[lang];
   const [open, setOpen] = useState<number | null>(null);
-
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const f = new FormData(e.currentTarget);
-    const app = String(f.get("app"));
-    const subject = `[${app}] ${f.get("subject")}`;
-    const body = `${f.get("message")}\n\n—\n${t.name}: ${f.get("name")}\n${t.yourEmail}: ${f.get("email")}\n${t.app}: ${app}`;
-    window.location.href = `mailto:${COMPANY.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  };
 
   const Row = ({ k, v }: { k: string; v: React.ReactNode }) => (
     <div className="flex flex-col sm:flex-row sm:gap-4 py-2 border-b border-border/60">
@@ -83,28 +67,6 @@ const Kontakt = () => {
           <Row k={t.email} v={<a href={`mailto:${COMPANY.email}`} className="underline underline-offset-4 hover:text-foreground">{COMPANY.email}</a>} />
           <Row k={t.response} v={t.responseVal} />
         </div>
-      </section>
-
-      <section className="mb-14">
-        <h2 className="font-heading text-2xl font-bold mb-2">{t.form}</h2>
-        <p className="text-sm text-muted-foreground mb-6">{t.formNote}</p>
-        <form onSubmit={onSubmit} className="space-y-4">
-          <div className="grid sm:grid-cols-2 gap-4">
-            <label className="block text-sm">{t.name}<input name="name" required maxLength={100} className={`${input} mt-1`} /></label>
-            <label className="block text-sm">{t.yourEmail}<input name="email" type="email" required maxLength={200} className={`${input} mt-1`} /></label>
-          </div>
-          <label className="block text-sm">{t.app}
-            <select name="app" required className={`${input} mt-1`} defaultValue={apps[0].name}>
-              {apps.map((a) => <option key={a.id} value={a.name}>{a.name} ({a.platform})</option>)}
-              <option value={t.other}>{t.other}</option>
-            </select>
-          </label>
-          <label className="block text-sm">{t.subject}<input name="subject" required maxLength={150} className={`${input} mt-1`} /></label>
-          <label className="block text-sm">{t.message}<textarea name="message" required rows={6} maxLength={4000} className={`${input} mt-1`} /></label>
-          <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-medium hover:opacity-90 transition-opacity">
-            <Mail className="h-4 w-4" /> {t.send}
-          </button>
-        </form>
       </section>
 
       <section className="mb-14">
@@ -136,7 +98,7 @@ const Kontakt = () => {
               <p className="text-sm text-muted-foreground mt-1">{a.description[lang]}</p>
               <p className="text-sm mt-2"><span className="font-medium">{t.account}:</span> <span className="text-muted-foreground">{a.account[lang]}</span></p>
               <div className="flex gap-4 mt-3 text-sm">
-                {a.url?.startsWith("http") && <a href={a.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">App Store</a>}
+                {a.url && <a href={a.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">App Store</a>}
                 <Link to={`/personvern#${a.id}`} className="underline underline-offset-4">{t.privacyLink}</Link>
               </div>
             </li>
