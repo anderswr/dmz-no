@@ -14,7 +14,7 @@ const Contact = () => {
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">Hvem er vi</h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
               Vi er et lite rådgivende konsulentselskap med kontor i Porsgrunn. Erfaring og kjennskap til produkter, løsninger, konvensjonelle og utradisjonelle gjør oss i stand til å gi nøytrale råd og support til de fleste vanlige typer prosjekter. Vi har bestemt oss for å vente med å gå på BØRS, dog fremtiden er vanskelig å spå. <br />
-              Du når oss på kontor@dmz.on
+              Du når oss på <a href="mailto:kontor@dmz.no" className="underline underline-offset-4 hover:text-foreground">kontor@dmz.no</a>
             </p>
 
             <div className="space-y-3 text-sm">
@@ -60,16 +60,11 @@ const Contact = () => {
 
             {showPrivacy && (
               <div className="text-sm text-muted-foreground leading-relaxed space-y-4 animate-fade-up">
-                <p>
-                  Personvernerklæring for nanolæringsappen <strong className="text-foreground">ToiletLearn Chat with AI</strong> og <strong className="text-foreground">ToiletLearn Web Search</strong>, og nettsiden{" "}
-                  <a href="https://sleep-test.org" className="underline hover:text-foreground" target="_blank" rel="noopener noreferrer">sleep-test.org</a>.
-                </p>
-                <p>
-                  Appen og nettsiden samler ikke inn, lagrer eller deler personopplysninger. For appen lagres all fremgang og alle svar lokalt på brukerens enhet, og sendes aldri til noen server.
-                </p>
-                <p>
-                  For nettsiden lagres en anonym/tilfeldig ID for hver fullførte test i en sikret database, sammen med poengsummer i hver kategori. Ingen innlogging, ingen registrering, ingen sporing, ingen kostnad.
-                </p>
+                <p>Personvernerklæringen gjelder alle våre apper og tjenester, med egne avsnitt per app.</p>
+                <div className="flex flex-col gap-2">
+                  <a href="/personvern" className="text-foreground underline underline-offset-4">Les personvernerklæringen →</a>
+                  <a href="/kontakt" className="text-foreground underline underline-offset-4">Support og kontakt for appene →</a>
+                </div>
               </div>
             )}
 
