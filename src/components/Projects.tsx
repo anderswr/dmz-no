@@ -18,7 +18,7 @@ const projects = [
   },
   {
     title: "PAC-RUN",
-    description: "Gjør løpeturen til et spill. Spis prikker langs veiene og bli jaget av spøkelser – enten i klassisk modus på et definert kart, eller fri intervalltrening der du rømmer ved å øke tempoet.",
+    description: "Gjør løpeturen til et spill. Spis prikker langs veiene og bli jaget av spøkelser – enten i klassisk modus på et definert kart, eller fri intervalltrening der du rømmer ved å øke tempoet når du hører lyden av et spøkelse.",
     url: "https://pac.run",
   },
   {
