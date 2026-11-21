@@ -17,6 +17,11 @@ const projects = [
     url: "https://utfordre.no",
   },
   {
+    title: "PAC-RUN",
+    description: "Gjør løpeturen til et spill. Spis prikker langs veiene og bli jaget av spøkelser – enten i klassisk modus på et definert kart, eller fri intervalltrening der du rømmer ved å øke tempoet.",
+    url: "https://pac.run",
+  },
+  {
     title: "Sleep Test",
     description: "En modulær, flerspråklig nettløsning som hjelper folk som sliter med søvn. Brukeren svarer på spørsmål og får en personlig rapport med forslag til tiltak.",
     url: "https://sleep-test.org",
